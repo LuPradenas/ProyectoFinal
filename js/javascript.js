@@ -1,3 +1,18 @@
+let nombre = prompt("Ingrese su nombre y apellido :");
+
+const usuarioEncontrado = usuarios.filter((user) => {
+  return user.nombreCompleto === nombre;
+});
+
+if (usuarioEncontrado.length > 0) {
+  alert(
+    "El nombre ingresado ya solicito un prestamo, en el caso que no sea asi comuniquese al numero 0800 555 333."
+  );
+} else {
+  alert("El nombre ingresado no tiene ningun prestamos solicitado");
+  simularPrestamo();
+}
+
 function simularPrestamo() {
   let repetir = true;
   while (repetir) {
@@ -23,6 +38,7 @@ function simularPrestamo() {
     }
   }
 }
+
 function calcularCuota(monto, interes, plazo) {
   // Calculo de tasa mensual
   const tasaMensual = interes / 12;
@@ -35,4 +51,3 @@ function calcularCuota(monto, interes, plazo) {
 
   return cuotaConInteres;
 }
-simularPrestamo();
