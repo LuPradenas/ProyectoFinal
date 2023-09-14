@@ -149,8 +149,8 @@ async function simularPrestamo() {
     Swal.fire({
       title: "Resultado de solicitud de préstamo",
       html: `
-        <p>Monto ingresado: ${monto}</p>
-        <p>Tasa de interés: ${interes}</p>
+        <p>Monto ingresado: ${monto} pesos</p>
+        <p>Tasa de interés: ${interes}%</p>
         <p>Cuotas: ${plazo} meses</p>
         <p>La cuota de tu préstamo es:${cuota}pesos</p>
       `,
@@ -166,7 +166,26 @@ async function simularPrestamo() {
         });
 
         if (email) {
-          Swal.fire("Solicitud enviada!", "", "success");
+          Swal.fire("Solicitud enviada!", "", "success").then(() => {
+            Swal.fire({
+              title: "¿Deseas solicitar otro préstamo?",
+              showCancelButton: true,
+              confirmButtonText: "Solicitar otro préstamo",
+              cancelButtonText: "Salir",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                cargarSeccion();
+              } else {
+                Swal.fire(
+                  "Gracias por solicitar un préstamo con nosotros",
+                  "",
+                  "success"
+                ).then(() => {
+                  window.location.href = "index.html";
+                });
+              }
+            });
+          });
         }
       }
     });
@@ -185,8 +204,3 @@ function calcularCuota(monto, interes, plazo) {
 
   return cuotaConInteres;
 }
-
-// despues que aparezca Solicitud enviada! que aparezca un cartel que diga si quiere solicitar otra consulta de prestamo
-// O si quiere salir?
-// si desea salir de la operacion que apareza un cartel que diga Gracias por solicitar un prestamo con nostros y que te regrese al inicio
-// si pone que no que aparezca devuelta en la parte de solicitar prestamo
