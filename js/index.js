@@ -185,3 +185,8 @@ function calcularCuota(monto, interes, plazo) {
 
   return cuotaConInteres;
 }
+
+// despues que aparezca Solicitud enviada! que aparezca un cartel que diga si quiere solicitar otra consulta de prestamo
+// O si quiere salir?
+// si desea salir de la operacion que apareza un cartel que diga Gracias por solicitar un prestamo con nostros y que te regrese al inicio
+// si pone que no que aparezca devuelta en la parte de solicitar prestamo
